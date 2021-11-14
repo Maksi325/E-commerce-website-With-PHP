@@ -1,7 +1,7 @@
  <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2021</p>
+                    <p>Copyright &copy; <a href="https://api.whatsapp.com/send?phone=+355+68+534+4136">Maxi production</a> 2021</p>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
