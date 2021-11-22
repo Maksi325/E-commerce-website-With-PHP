@@ -30,6 +30,7 @@
                                         die('Querry Falied: ' . mysqli_error($connection));
                                     }
                                 }
+                                header("Location: categories.php");
                             }
                             ?>
                            
@@ -39,17 +40,27 @@
                                 <div class="form-group">
                                     <input class="form-control" type="text" name="cat_title">
                                 </div>
+                                
                                 <div class="form-group">
-                                <input class="btn btn-primary" type="submit" name="submit" value="Add Category">
+                                    <input class="btn btn-primary" type="submit" name="submit" value="Add Category">
                                 </div>
                             </form>
+                            
+                            <?php     
+                            // Updating categories  
+                            if(isset($_GET['edit'])){
+                                include "includes/Update_categories.php";
+                            }?>
+                            
+                            
+                            
+                            
                         </div>
                         
                         
                         <?php
                                   
-                            $query = "Select * from categories ";
-                            $result = mysqli_query($connection,$query);
+
                         ?>
                         <div class="col_xs_6">
                             <table class="table table-bordered table-hover">
@@ -57,26 +68,45 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Category Title</th>
+                                        <th>Delete</th>
+                                        <th>Update</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   <?php
+                                   <?php // Find all categories
+                                    $query = "Select * from categories ";
+                                    $result = mysqli_query($connection,$query);
+                                    
                                     while($row = mysqli_fetch_assoc($result)){
                                     $cat_id = $row['cat_id'];
                                     $cat_title = $row['cat_title'];
                                     echo "<tr>";
                                     echo "<td> {$cat_id} </td>";
                                     echo "<td> {$cat_title} </td>";
+                                    echo "<td><a class = 'fa fa-fw fa-trash' href='categories.php?delete={$cat_id}'></a>  </td>";
+                                    echo "<td><a class='fa fa-fw fa-edit' href='categories.php?edit={$cat_id}'></a>  </td>";
                                     echo"</tr>";
                                 }
                                 
                                 ?>
+                                <?php // delete post
+                                if(isset($_GET['delete'])){
+                                    $Delete_Id = $_GET['delete'];
+                                    $Delete_querry  = "DELETE FROM `categories` WHERE `categories`.`cat_id` = {$Delete_Id}";
+                                    mysqli_query($connection , $Delete_querry);
+                                    header("Location: categories.php");
+                                }
+                                    
+                                ?>
+                                
+                                
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
                 <!-- /.row -->
+                
 
             </div>
             <!-- /.container-fluid -->
