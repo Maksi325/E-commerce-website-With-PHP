@@ -36,6 +36,7 @@
              echo "<td>$post_tags</td>";
              echo "<td>$post_coment_count</td>";
              echo "<td>$post_date</td>";
+             echo "<td><a class = 'fa fa-fw fa-trash' href='posts.php?delete_id={$post_id}&source=2'></a>  </td>";
              echo "</tr>";
          }
          ?>

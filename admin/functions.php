@@ -1,4 +1,17 @@
 <?php
+
+function deletePostById($ID){
+    global $connection;
+    
+    $query = "DELETE FROM `posts` WHERE `posts`.`post_id` = {$ID}";
+    $result =  mysqli_query($connection , $query);
+    if(!$result){
+        die( 'Querry Falied: ' . mysqli_error( $connection ) );
+    }
+    header("Location: posts.php");
+}
+
+
 function insert_categories() {
     global $connection;
     

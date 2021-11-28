@@ -24,7 +24,10 @@
                                 include "includes/add_post.php";
                                 break;
                             case '2':
-                                echo "Nice 2";
+                                if(isset($_GET['delete_id'])){
+                                    $delete_post_id = $_GET['delete_id'];
+                                    deletePostById($delete_post_id);
+                                }
                                 break;
                             case '3':
                                 echo "Nice 3";
