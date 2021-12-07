@@ -10,6 +10,8 @@
              <th>Tags</th>
              <th>Comments</th>
              <th>Dates</th>
+             <th>Edit</th>
+             <th>Delete</th>
          </tr>
      </thead>
      <tbody>
@@ -30,12 +32,20 @@
              echo "<td>$post_id</td>";
              echo "<td>$post_author</td>";
              echo "<td>$post_title</td>";
-             echo "<td>$post_category_id</td>";
+             
+             $query = "Select * from categories where cat_id = {$post_category_id} ";
+                $result = mysqli_query($connection,$query);
+                while($row = mysqli_fetch_assoc($result)){
+                    $cat_title = $row['cat_title'];
+                }
+             echo "<td>$cat_title</td>";
+             
              echo "<td>$post_status</td>";
              echo "<td> <img width='150' src='../image/$post_image' alt='Here Should have an image'> </td>";
              echo "<td>$post_tags</td>";
              echo "<td>$post_coment_count</td>";
              echo "<td>$post_date</td>";
+             echo "<td><a class = 'fa fa-fw fa-edit' href='posts.php?edit_id={$post_id}&source=3'></a>  </td>";
              echo "<td><a class = 'fa fa-fw fa-trash' href='posts.php?delete_id={$post_id}&source=2'></a>  </td>";
              echo "</tr>";
          }

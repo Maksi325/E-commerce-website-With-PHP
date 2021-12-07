@@ -20,17 +20,17 @@
                         }
                         
                         switch($source){
-                            case '1':
+                            case '1': //add new post
                                 include "includes/add_post.php";
                                 break;
-                            case '2':
+                            case '2': //delete the selected post
                                 if(isset($_GET['delete_id'])){
                                     $delete_post_id = $_GET['delete_id'];
                                     deletePostById($delete_post_id);
                                 }
                                 break;
-                            case '3':
-                                echo "Nice 3";
+                            case '3': //edit post details
+                                include "includes/edit_post.php";
                                 break;
                             case '4':
                                 echo "Nice 4";
