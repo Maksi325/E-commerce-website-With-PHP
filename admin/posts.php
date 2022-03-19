@@ -32,7 +32,7 @@
                             case '3': //edit post details
                                 include "includes/edit_post.php";
                                 break;
-                            case '4':
+                            case '4': //coming soon 
                                 echo "Nice 4";
                                 break;
                             default:

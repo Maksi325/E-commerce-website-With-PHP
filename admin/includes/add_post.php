@@ -16,15 +16,23 @@ if(isset($_POST['create_post'])){
     $post_content =$_POST['post_content'];
     $post_date = date('d-m-y');
     $post_coment_count = 0;
-    
+    $post_views_count = 0;
     $temp = explode(".", $_FILES['image']['name']);
     $newfilename = round(microtime(true)) . '.' . end($temp);
     move_uploaded_file($_FILES['image']['tmp_name'], "../image/" . $newfilename);
     
     
-    $query_add_post = "INSERT INTO `posts` (`post_category_id`, `post_title`, `post_author`, `post_date`, `post_image`, `post_content`, `post_tags`, `post_coment_count`, `post_status`)";
+    $query_add_post = "INSERT INTO `posts` (`post_category_id`, `post_title`, `post_author`, `post_date`, `post_image`, `post_content`, `post_tags`, `post_coment_count`, `post_status`, `post_views_count`) ";
     
-    $query_add_post.= "VALUES ( '{$post_category_id}', '{$post_title}', '{$post_author}',now(), '{$newfilename}', '{$post_content}', '{$post_tags}', '{$post_coment_count}', '{$post_status}');";
+    $query_add_post.= "VALUES ( '{$post_category_id}', '{$post_title}', '{$post_author}',now(), '{$newfilename}', '{$post_content}', '{$post_tags}', '{$post_coment_count}', '{$post_status}','{$post_views_count}');";
+    
+    
+    echo $query_add_post;
+    echo "<br><br><br>";
+    
+    
+    
+    
     $add_result = mysqli_query($connection , $query_add_post);
     
     
