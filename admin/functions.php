@@ -11,6 +11,39 @@ function deletePostById($ID){
     header("Location: posts.php");
 }
 
+function deleteCommentById($ID){
+    global $connection;
+    
+    $query = "DELETE FROM `comments` WHERE `comments`.`comment_id` = {$ID}";
+    $result =  mysqli_query($connection , $query);
+    if(!$result){
+        die( 'Querry Falied: ' . mysqli_error( $connection ) );
+    }
+    header("Location: comments.php");
+}
+
+ 
+function UnapproveCommentById($ID){
+    global $connection;
+    
+    $query = "UPDATE `comments` SET `comment_status` = 'Unapprove' WHERE `comments`.`comment_id` = {$ID}";
+    $result =  mysqli_query($connection , $query);
+    if(!$result){
+        die( 'Querry Falied: ' . mysqli_error( $connection ) );
+    }
+    header("Location: comments.php");
+}
+
+function ApproveCommentById($ID){
+    global $connection;
+    
+    $query = "UPDATE `comments` SET `comment_status` = 'Approve' WHERE `comments`.`comment_id` = {$ID}";
+    $result =  mysqli_query($connection , $query);
+    if(!$result){
+        die( 'Querry Falied: ' . mysqli_error( $connection ) );
+    }
+    header("Location: comments.php");
+}
 
 function insert_categories() {
     global $connection;

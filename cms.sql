@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2022 at 04:59 PM
+-- Generation Time: Mar 20, 2022 at 02:47 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -38,6 +38,29 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`cat_id`, `cat_title`) VALUES
 (1, 'Makina');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `comment_id` int(4) NOT NULL,
+  `comment_post_id` int(4) NOT NULL,
+  `comment_author` varchar(255) NOT NULL,
+  `comment_email` varchar(255) NOT NULL,
+  `comment_content` text NOT NULL,
+  `comment_status` varchar(255) NOT NULL,
+  `comment_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`comment_id`, `comment_post_id`, `comment_author`, `comment_email`, `comment_content`, `comment_status`, `comment_date`) VALUES
+(3, 0, 'Maksim Majmari', 'MaksimMajmari@gmail.com', 'Maksi , you are doing asome thinks...', 'Approve', '2022-03-20');
 
 -- --------------------------------------------------------
 
@@ -77,6 +100,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`cat_id`);
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`comment_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -85,6 +114,12 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `categories`
   MODIFY `cat_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `comment_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

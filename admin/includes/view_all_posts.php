@@ -50,6 +50,5 @@
              echo "</tr>";
          }
          ?>
-         <img  src="" alt="">
      </tbody>
  </table>
