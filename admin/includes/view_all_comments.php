@@ -61,7 +61,7 @@
  
  <?php
     if(isset($_GET['delete'])){
-        deleteCommentById($_GET['delete']);
+        deleteCommentById($_GET['delete'] , $comment_post_id);
     }
     if(isset($_GET['Approve'])){
         ApproveCommentById($_GET['Approve']);

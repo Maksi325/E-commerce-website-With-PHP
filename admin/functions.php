@@ -11,11 +11,15 @@ function deletePostById($ID){
     header("Location: posts.php");
 }
 
-function deleteCommentById($ID){
+function deleteCommentById($ID,$post_id){
     global $connection;
     
     $query = "DELETE FROM `comments` WHERE `comments`.`comment_id` = {$ID}";
     $result =  mysqli_query($connection , $query);
+    
+    $decreasePost_comment_count = "Update posts SET post_coment_count = post_coment_count - 1 ";
+    $decreasePost_comment_count.=" WHERE post_id = $post_id";
+    $result =  mysqli_query($connection , $decreasePost_comment_count);
     if(!$result){
         die( 'Querry Falied: ' . mysqli_error( $connection ) );
     }

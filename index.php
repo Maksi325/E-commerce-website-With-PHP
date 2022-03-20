@@ -15,8 +15,11 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
                 <?php 
+                $post_status=null;
+                
+                
                     
-                    $query = "Select * from posts";
+                    $query = "Select * from posts where post_status = 'Published'";
                     
                     $result = mysqli_query($connection,$query);
                     
@@ -27,7 +30,10 @@
                         $post_date = $row['post_date'];
                         $post_image = $row['post_image'];
                         $post_content =  substr($row['post_content'], 0 , 100)."...";
-                    
+                        $post_status = $row['post_status'];
+                        
+                        
+                        
                     ?>
 
                 <h1 class="page-header">
@@ -59,7 +65,11 @@
                     Read More <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
 
-               <?php  }   ?>
+               <?php  } 
+                if(!$post_status){
+                    echo "<h1 class='text-center'> NO POST SORRY </h1>";
+                }
+                ?>
                 <hr>
 
           

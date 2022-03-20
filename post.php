@@ -75,6 +75,13 @@
                     if(!$result){
                         die('Querry Falied: '.mysqli_error($connection));
                     }
+                    $QuerryIncreaseCommentCount = "Update posts SET post_coment_count = post_coment_count + 1 ";
+                    $QuerryIncreaseCommentCount .=" WHERE post_id = $the_post_id";
+                    
+                    $Increase = mysqli_query($connection , $QuerryIncreaseCommentCount);
+                    if(!$Increase){
+                        die('Querry Falied: '.mysqli_error($connection));
+                    }
                 }
                 ?>
                 
