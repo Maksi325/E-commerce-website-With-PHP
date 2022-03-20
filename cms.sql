@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2022 at 02:47 AM
+-- Generation Time: Mar 20, 2022 at 05:44 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -60,7 +60,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`comment_id`, `comment_post_id`, `comment_author`, `comment_email`, `comment_content`, `comment_status`, `comment_date`) VALUES
-(3, 0, 'Maksim Majmari', 'MaksimMajmari@gmail.com', 'Maksi , you are doing asome thinks...', 'Approve', '2022-03-20');
+(12, 0, 'Maxi 77777', 'Maxi77777@gmail.com', 'That car is asome  , i am ready to by it. How much do you want??', 'Approve', '2022-03-20'),
+(14, 0, 'dasd ', 'dsa@adsfd.das', 'das dd ds', 'Unapproved', '2022-03-20');
 
 -- --------------------------------------------------------
 
@@ -87,7 +88,25 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `post_category_id`, `post_title`, `post_author`, `post_date`, `post_image`, `post_content`, `post_tags`, `post_coment_count`, `post_status`, `post_views_count`) VALUES
-(0, 1, 'I wanna sell my car ', 'Maxi', '2022-03-19', '1647697227.avif', 'I wana sell my car becouse i just bought an other car and i am not using the old one.   ', 'car , benz , amg , ', 0, 'draft', 0);
+(0, 1, 'I wanna sell my car ', 'Maxi', '2022-03-20', '1647697227.avif', 'I wana sell my car becouse i just bought an other car and i am not using the old one.   ', 'car , benz , amg , ', 2, 'Published', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(4) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `user_password` varchar(255) NOT NULL,
+  `user_firstname` varchar(255) NOT NULL,
+  `user_lastname` varchar(255) NOT NULL,
+  `user_email` varchar(255) NOT NULL,
+  `user_image` text NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `user_randSalt` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -106,6 +125,12 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -119,7 +144,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `comment_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(4) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
