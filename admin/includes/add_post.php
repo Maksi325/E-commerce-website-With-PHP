@@ -5,9 +5,7 @@ if(isset($_POST['create_post'])){
     $post_author =$_POST['post_author'];
     $post_status =$_POST['post_status'];
     
-    echo "<pre>";
-    print_r($_FILES);
-    echo "</pre>";
+    
     $post_image = $_FILES['image']['name'] . '.jpg';
     $post_image_temp = $_FILES['image']['tmp_name'];
     

@@ -10,6 +10,16 @@ function deletePostById($ID){
     }
     header("Location: posts.php");
 }
+function deleteUserById($ID){
+    global $connection;
+    
+    $query = "DELETE FROM `users` WHERE `users`.`user_id` = {$ID}";
+    $result =  mysqli_query($connection , $query);
+    if(!$result){
+        die( 'Querry Falied: ' . mysqli_error( $connection ) );
+    }
+    header("Location: users.php");
+}
 
 function deleteCommentById($ID,$post_id){
     global $connection;
@@ -98,5 +108,25 @@ function deleteCategories(){
     
 }
 
+function changeToAdminById($ID){
+    global $connection;
+    
+    $query = "UPDATE `users` SET `role` = 'admin' WHERE `users`.`user_id` = {$ID}";
+    $result =  mysqli_query($connection , $query);
+    if(!$result){
+        die( 'Querry Falied: ' . mysqli_error( $connection ) );
+    }
+    header("Location: users.php");
+}
+function changeToUserById($ID){
+    global $connection;
+    
+    $query = "UPDATE `users` SET `role` = 'user' WHERE `users`.`user_id` = {$ID}";
+    $result =  mysqli_query($connection , $query);
+    if(!$result){
+        die( 'Querry Falied: ' . mysqli_error( $connection ) );
+    }
+    header("Location: users.php");
+}
 
 ?>
