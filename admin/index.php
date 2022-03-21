@@ -1,29 +1,44 @@
-<?php   include "includes/header.php";  ?>
+<?php   include "includes/header.php";
+?>
 
-    <div id="wrapper">
+<div id="wrapper">
 
-        <!-- Navigation -->
-        <?php   include "includes/navigation.php";  ?>
+    <!-- Navigation -->
+    <?php   include "includes/navigation.php";
+?>
 
-        <div id="page-wrapper">
+    <?php
+if ( isset( $_SESSION['username'] ) ) {
+    $username = $_SESSION['username'];
+    $user_firstname =  $_SESSION['firstname'] ;
+    $user_lastname = $_SESSION['lastname']  ;
+    $user_role = $_SESSION['user_role']  ;
 
-            <div class="container-fluid">
+} else {
+    header( "Location: ../" );
+}
+?>
 
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Welcome to admin
-                            <small>Author</small>
-                        </h1>
-                        
-                    </div>
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Welcome To Admin Panel
+                        <small><?php echo $user_firstname." ".$user_lastname;?></small>
+                    </h1>
+
                 </div>
-                <!-- /.row -->
-
             </div>
-            <!-- /.container-fluid -->
+            <!-- /.row -->
 
         </div>
-        <!-- /#page-wrapper -->
-        <?php   include "includes/footer.php";   ?>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- /#page-wrapper -->
+    <?php   include "includes/footer.php";
+?>
