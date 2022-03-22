@@ -33,7 +33,11 @@ if ( isset( $_POST['login'] ) ) {
             $_SESSION['firstname'] = $db_user_firstname;
             $_SESSION['lastname'] = $db_user_lastname;
             $_SESSION['user_role'] = $db_user_role;
+        if($db_user_role === "admin"){
             header( "Location: ../admin/" );
+        }elseif($db_user_role === "user"){
+            header( "Location: ../user/");
+        }
 
     }else{//Nese esht User coje tek home page 
         header("Location: ../");

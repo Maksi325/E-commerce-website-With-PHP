@@ -67,10 +67,10 @@
         <select name="role" id="post_category">
             <?php
             if($user_role=="admin"){
-                echo"<option selected='selected' value='Admin'>Admin</option>";
+                echo"<option selected='selected' value='admin'>Admin</option>";
                 echo"<option  value='user'>User</option>";
             }else{
-                echo"<option  value='Admin'>Admin</option>";
+                echo"<option  value='admin'>Admin</option>";
                 echo"<option selected='selected' value='user'>User</option>";
             }
             ?>

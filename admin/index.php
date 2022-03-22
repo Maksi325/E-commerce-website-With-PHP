@@ -4,21 +4,7 @@
 <div id="wrapper">
 
     <!-- Navigation -->
-    <?php   include "includes/navigation.php";
-?>
-
-    <?php
-if ( isset( $_SESSION['username'] ) ) {
-    $username = $_SESSION['username'];
-    $user_firstname =  $_SESSION['firstname'] ;
-    $user_lastname = $_SESSION['lastname']  ;
-    $user_role = $_SESSION['user_role']  ;
-
-} else {
-    header( "Location: ../" );
-}
-?>
-
+    <?php   include "includes/navigation.php"; ?>
     <div id="page-wrapper">
 
         <div class="container-fluid">
@@ -27,8 +13,8 @@ if ( isset( $_SESSION['username'] ) ) {
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Welcome To Admin Panel
-                        <small><?php echo $user_firstname." ".$user_lastname;?></small>
+                        Welcome AdminTo Dashboard
+                        <small><?php echo $name;?></small>
                     </h1>
 
                 </div>

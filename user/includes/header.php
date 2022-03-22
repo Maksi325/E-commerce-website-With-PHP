@@ -4,7 +4,7 @@
 <?php session_start();  
 
 if(isset($_SESSION['user_role'])){
-    if($_SESSION['user_role'] !== "admin"){
+    if($_SESSION['user_role'] !== "user"){
         header("Location: ../");
     }else{
         $name = $_SESSION['firstname'] . " " . $_SESSION['lastname'];

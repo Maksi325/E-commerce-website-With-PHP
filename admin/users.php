@@ -9,8 +9,8 @@
                 <div class="col-lg-12">
 
                     <h1 class="page-header">
-                        Welcome to admin
-                        <small>Author</small>
+                        Welcome Admin To Users Section
+                        <small><?php echo $name;?></small>
                     </h1>
                     <?php
                         if(isset($_GET['source'])){
