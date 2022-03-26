@@ -24,13 +24,6 @@ if(isset($_POST['create_post'])){
     
     $query_add_post.= "VALUES ( '{$post_category_id}', '{$post_title}', '{$post_author}',now(), '{$newfilename}', '{$post_content}', '{$post_tags}', '{$post_coment_count}', '{$post_status}','{$post_views_count}');";
     
-    
-    echo $query_add_post;
-    echo "<br><br><br>";
-    
-    
-    
-    
     $add_result = mysqli_query($connection , $query_add_post);
     
     
