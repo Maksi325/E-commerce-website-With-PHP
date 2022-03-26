@@ -28,17 +28,17 @@ if(isset($_POST['create_user'])){
 <form action="" method="post" enctype="multipart/form-data">
    
     <div class="form-group">
-        <label for="title">First Name</label>
+        <label for="user_firstname">First Name</label>
         <input type="text" class="form-control" name="user_firstname">
     </div>
     
     <div class="form-group">
-        <label for="title">Last Name</label>
+        <label for="user_lastname">Last Name</label>
         <input type="text" class="form-control" name="user_lastname">
     </div>
    
      <div class="form-group">
-        <label for="post_category">Role</label>
+        <label for="user_role">Role</label>
         <br>
         <select name="user_role" id="user_role">
             <option value="user">Select User</option>
@@ -48,12 +48,12 @@ if(isset($_POST['create_user'])){
     </div>
     
     <div class="form-group">
-        <label for="author">Username</label>
+        <label for="username">Username</label>
         <input type="text" class="form-control" name="username">
     </div>
     
     <div class="form-group">
-        <label for="post_status">E - mail</label>
+        <label for="user_email">E - mail</label>
         <input type="email" class="form-control" name="user_email">
     </div>
     
@@ -65,7 +65,7 @@ if(isset($_POST['create_user'])){
 -->
     
     <div class="form-group">
-        <label for="Password">Password</label>
+        <label for="user_password">Password</label>
         <input type="password" class="form-control" name="user_password">
     </div>
     
