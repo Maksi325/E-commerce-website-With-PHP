@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2022 at 05:44 PM
+-- Generation Time: Mar 27, 2022 at 02:34 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -48,20 +48,13 @@ INSERT INTO `categories` (`cat_id`, `cat_title`) VALUES
 CREATE TABLE `comments` (
   `comment_id` int(4) NOT NULL,
   `comment_post_id` int(4) NOT NULL,
+  `comment_user_id` int(4) NOT NULL,
   `comment_author` varchar(255) NOT NULL,
   `comment_email` varchar(255) NOT NULL,
   `comment_content` text NOT NULL,
   `comment_status` varchar(255) NOT NULL,
   `comment_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`comment_id`, `comment_post_id`, `comment_author`, `comment_email`, `comment_content`, `comment_status`, `comment_date`) VALUES
-(12, 0, 'Maxi 77777', 'Maxi77777@gmail.com', 'That car is asome  , i am ready to by it. How much do you want??', 'Approve', '2022-03-20'),
-(14, 0, 'dasd ', 'dsa@adsfd.das', 'das dd ds', 'Unapproved', '2022-03-20');
 
 -- --------------------------------------------------------
 
@@ -72,6 +65,7 @@ INSERT INTO `comments` (`comment_id`, `comment_post_id`, `comment_author`, `comm
 CREATE TABLE `posts` (
   `post_id` int(4) NOT NULL,
   `post_category_id` int(4) NOT NULL,
+  `post_user_id` int(4) NOT NULL,
   `post_title` varchar(255) NOT NULL,
   `post_author` varchar(255) NOT NULL,
   `post_date` date NOT NULL,
@@ -82,13 +76,6 @@ CREATE TABLE `posts` (
   `post_status` varchar(255) NOT NULL DEFAULT 'draft',
   `post_views_count` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `posts`
---
-
-INSERT INTO `posts` (`post_id`, `post_category_id`, `post_title`, `post_author`, `post_date`, `post_image`, `post_content`, `post_tags`, `post_coment_count`, `post_status`, `post_views_count`) VALUES
-(0, 1, 'I wanna sell my car ', 'Maxi', '2022-03-20', '1647697227.avif', 'I wana sell my car becouse i just bought an other car and i am not using the old one.   ', 'car , benz , amg , ', 2, 'Published', 0);
 
 -- --------------------------------------------------------
 
@@ -122,7 +109,17 @@ ALTER TABLE `categories`
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`comment_id`);
+  ADD PRIMARY KEY (`comment_id`),
+  ADD KEY `comment_post_id` (`comment_post_id`),
+  ADD KEY `comment_user_id` (`comment_user_id`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`post_id`),
+  ADD KEY `post_category_id` (`post_category_id`,`post_user_id`),
+  ADD KEY `post_user_id` (`post_user_id`);
 
 --
 -- Indexes for table `users`
@@ -151,6 +148,24 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`comment_post_id`) REFERENCES `posts` (`post_id`),
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`comment_user_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `posts`
+--
+ALTER TABLE `posts`
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`post_user_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`post_category_id`) REFERENCES `categories` (`cat_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
