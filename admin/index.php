@@ -25,11 +25,7 @@
                                             <i class="fa fa-file-text fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <?php
-                                            $querry = "Select * from posts";
-                                            $result = mysqli_query($connection, $querry);
-                                            $post_counts = mysqli_num_rows($result);
-                                        ?>
+                                            <?php $post_counts = countRows( 'posts' ); ?>
 
                                             <div class='huge'><?php echo $post_counts; ?></div>
                                             <div>Posts</div>
@@ -54,11 +50,7 @@
                                             <i class="fa fa-comments fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <?php
-                                            $querry = "Select * from comments";
-                                            $result = mysqli_query($connection, $querry);
-                                            $comments_counts = mysqli_num_rows($result);
-                                        ?>
+                                            <?php $comments_counts = countRows( 'comments' ); ?>
                                             <div class='huge'><?php echo $comments_counts; ?></div>
                                             <div>Comments</div>
                                         </div>
@@ -82,11 +74,7 @@
                                             <i class="fa fa-user fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <?php
-                        $querry = "Select * from users";
-                        $result = mysqli_query($connection, $querry);
-                        $users_counts = mysqli_num_rows($result);
-                    ?>
+                                            <?php $users_counts = countRows( 'users' ); ?>
                                             <div class='huge'><?php echo $users_counts; ?></div>
                                             <div> Users</div>
                                         </div>
@@ -110,11 +98,7 @@
                                             <i class="fa fa-list fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <?php
-                        $querry = "Select * from categories";
-                        $result = mysqli_query($connection, $querry);
-                        $categories_counts = mysqli_num_rows($result);
-                        ?>
+                                            <?php $categories_counts = countRows( 'categories' ); ?>
                                             <div class='huge'><?php echo $categories_counts; ?></div>
                                             <div>Categories</div>
                                         </div>
