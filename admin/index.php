@@ -26,7 +26,6 @@
                                         </div>
                                         <div class="col-xs-9 text-right">
                                             <?php $post_counts = countRows( 'posts' ); ?>
-
                                             <div class='huge'><?php echo $post_counts; ?></div>
                                             <div>Posts</div>
                                         </div>
