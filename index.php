@@ -25,6 +25,7 @@
                     
                     while($row = mysqli_fetch_assoc($result) ){
                         $post_id = $row['post_id'];
+                        $post_user_id = $row['post_user_id'];
                         $post_title = $row['post_title'];
                         $post_author = $row['post_author'];
                         $post_date = $row['post_date'];
@@ -36,11 +37,6 @@
                         
                     ?>
 
-                <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
-                </h1>
-
                 <!-- First Blog Post -->
                 <h2>
                     <a href="post.php?p_id=<?php   echo $post_id  ?>">
@@ -48,7 +44,7 @@
                     </a>
                 </h2>
                 <p class="lead">
-                    by <a href="index.php">
+                    by <a href="user_profile.php?u_id=<?php echo $post_user_id?>">
                         <?php   echo $post_author    ?>
                     </a>
                 </p>
