@@ -53,7 +53,6 @@
         $updateQuery = "UPDATE `users` SET";
         $updateQuery .="`user_firstname` = '{$user_firstname}' , ";
         $updateQuery .="`user_lastname` = '{$user_lastname}' , ";
-        $updateQuery .="`role` = '{$user_role}' , ";
         $updateQuery .="`username` = '{$username}' , ";
         $updateQuery .="`user_email` = '{$user_email}' , ";
         $updateQuery .="`user_password` = '{$user_password}' ";
@@ -63,7 +62,6 @@
         $_SESSION['username'] = $username;
         $_SESSION['firstname'] = $user_firstname;
         $_SESSION['lastname'] = $user_lastname;
-        $_SESSION['user_role'] = $user_role;
         header( "Location: index.php" );
         
     }
@@ -77,23 +75,6 @@
                         <div class="form-group">
                             <label for="user_lastname">Last Name</label>
                             <input value='<?php echo $user_lastname?>' type="text" class="form-control" name="user_lastname">
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="role">Role</label>
-                            <br>
-                            <select name="role" id="post_category">
-                                <?php
-            if($user_role=="admin"){
-                echo"<option selected='selected' value='admin'>Admin</option>";
-                echo"<option  value='user'>User</option>";
-            }else{
-                echo"<option  value='admin'>Admin</option>";
-                echo"<option selected='selected' value='user'>User</option>";
-            }
-            ?>
-                            </select>
                         </div>
 
                         <div class="form-group">

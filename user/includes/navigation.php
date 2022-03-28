@@ -41,18 +41,15 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"><i class="fa fa-fw fa-arrows-v"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="posts_dropdown" class="collapse">
                             <li>
-                                <a href="">View All Posts </a>
+                                <a href="posts.php">View All Posts </a>
                             </li>
                             <li>
-                                <a href="">Add Posts</a>
+                                <a href="posts.php?source= 1">Add Posts</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-fw fa-wrench"></i>Categories</a>
-                    </li>
-                    <li>
-                        <a href=""><i class="fa fa-fw fa-file"></i>Comments</a>
+                        <a href="comments.php"><i class="fa fa-fw fa-file"></i>Comments</a>
                     </li>
                     <li>
                         <a href="profile.php"><i class="fa fa-fw fa-dashboard"></i>Profile</a>

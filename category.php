@@ -19,7 +19,9 @@
                 
                 if(isset($_GET['cat_id'])){
                         $the_category_id = $_GET['cat_id'];
-                    }
+                }else{
+                    header( "Location: error_page.php" );
+                }
                 
                     
                     $query = "Select * from posts where  post_category_id = $the_category_id and post_status = 'Published'";
@@ -28,6 +30,7 @@
                     
                     while($row = mysqli_fetch_assoc($result) ){
                         $post_id = $row['post_id'];
+                        $post_user_id = $row['post_user_id'];
                         $post_title = $row['post_title'];
                         $post_author = $row['post_author'];
                         $post_date = $row['post_date'];
@@ -49,7 +52,7 @@
                     </a>
                 </h2>
                 <p class="lead">
-                    by <a href="index.php">
+                    by <a href="user_profile.php?u_id=<?php echo $post_user_id ?>">
                         <?php   echo $post_author    ?>
                     </a>
                 </p>

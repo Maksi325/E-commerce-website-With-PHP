@@ -17,6 +17,8 @@
                 <?php
                 if(isset($_GET['p_id'])){
                     $the_post_id = $_GET['p_id'];
+                }else{
+                    header( "Location: error_page.php" );
                 }   
                     $query = "Select * from posts where post_id = $the_post_id";
                     

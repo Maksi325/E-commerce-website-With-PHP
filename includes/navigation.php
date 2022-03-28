@@ -33,7 +33,11 @@
                     <?php
                         if(isset($_SESSION['username'])){
                             if(isset($_GET['p_id'])){
-                                echo "<li><a href='admin/posts.php?source=3&edit_id={$_GET['p_id']}'>Edit Post</a></li>";
+                                if($_SESSION['user_role'] === 'admin'){
+                                    echo "<li><a href='admin/posts.php?source=3&edit_id={$_GET['p_id']}'>Edit Post</a></li>";
+                                }else{
+                                    echo "<li><a href='user/posts.php?source=3&edit_id={$_GET['p_id']}'>Edit Post</a></li>";
+                                }
                             }
                         }
                     ?>
