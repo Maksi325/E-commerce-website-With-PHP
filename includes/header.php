@@ -13,6 +13,9 @@
     <title>Blog Home - Start Bootstrap Template</title>
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
     <!-- Custom CSS -->
     <link href="css/blog-home.css" rel="stylesheet">
     <link href="css/user_profile.css" rel="stylesheet">

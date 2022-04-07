@@ -26,7 +26,6 @@
              $user_lastname = $row['user_lastname'];
              $user_email = $row['user_email'];
              $role = $row['role'];
-             $user_randSalt = $row['user_randSalt'];
              
              echo "<tr>";
              echo "<td>$username</td>";

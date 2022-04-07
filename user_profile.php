@@ -35,11 +35,12 @@
         <div class="row justify-content-center">
             <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
                 <div class="card border-0 shadow">
+                    
                     <?php 
                         if( $user_image === ''){
-                            echo "<img src='image/person.png' alt='...'>";
+                            echo "<img src='image/person.png' class='Profile-photo' alt='...'>";
                         }else{
-                            echo "<img src='image/{$user_image}' alt='...'>";
+                            echo "<img src='image/{$user_image}' class='Profile-photo' alt='...'>";
                         }
                     ?>
                     <div class="card-body p-1-9 p-xl-5">

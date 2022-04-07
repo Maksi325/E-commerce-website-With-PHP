@@ -30,6 +30,10 @@
                     
                     ?>
                     <li><a href='admin'>Admin</a> </li>
+
+                    
+            <!-- Top Menu Items -->
+            
                     <?php
                         if(isset($_SESSION['username'])){
                             if(isset($_GET['p_id'])){
@@ -43,6 +47,14 @@
                     ?>
                     
                 </ul>
+            <?php 
+            // if( Nese nuk je loguar.... )
+            ?>
+            
+
+
+
+            
             </div>
             <!-- /.navbar-collapse -->
         </div>
