@@ -35,6 +35,14 @@
                         
                     ?>
 
+                    <?php
+                        if(isset($_SESSION['username']) && $_SESSION['username'] !== null ){
+                    ?>
+                        <div style="background-color: blue; height: 3.6rem; width: 95px; margin-right: 40px; margin-left: auto;  ">
+                            <a href="" class="btn" style="color:black;" >+ Add Post</a>
+                        </div>
+
+                    <?php }?>
                 <article>
                 <h2>
                     <a href="post.php?p_id=<?php   echo $post_id  ?>">
