@@ -1,4 +1,5 @@
 <div class="well">
-    <h4>Side Widget Well</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+    <h4>Reason why this website stand for. </h4>
+    <p>This Website is Created to help people who what to sell somthing , by posting what they wanna sell.
+    </p>
 </div>

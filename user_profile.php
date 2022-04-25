@@ -60,7 +60,7 @@
                     <div class="mb-5 wow fadeIn">
                         <div class="text-start mb-1-6 wow fadeIn">
                             <!-- Set firstname and last name of user  -->
-                            <h2 class="h1 mb-0 text-primary"><?php echo $user_firstname . "    " . $user_lastname . "  Post's "?></h2>
+                            <h2 class="h1 mb-0 text-primary">His Posts</h2>
                             <hr>
                         </div>
                         <?php 
@@ -84,29 +84,24 @@
                         $post_status = $row['post_status'];
                         
                     ?>
-                        <!-- First Blog Post -->
-                        <h2>
-                            <a href="post.php?p_id=<?php   echo $post_id  ?>">
-                                <?php   echo $post_title    ?>
-                            </a>
-                        </h2>
-                        <p class="lead">
-                            by <a href="index.php">
-                                <?php   echo $post_author    ?>
-                            </a>
-                        </p>
+
+                    
+
+                    <article>
+                        <h2> <?php   echo $post_title    ?> </h2>
+
                         <p><span class="glyphicon glyphicon-time"></span>
                             <?php   echo $post_date    ?>
                         </p>
-                        <hr>
                         <img class="img-responsive" src="image/<?php   echo $post_image ?>" alt="">
-                        <hr>
-                        <p>
+                        <p style="padding-top: 2rem;" >
                             <?php   echo $post_content    ?>
                         </p>
                         <a class="btn btn-primary" href="post.php?p_id=<?php   echo $post_id  ?>">
                             Read More <span class="glyphicon glyphicon-chevron-right"></span>
                         </a>
+                    </article>
+                        
 
                         <?php  } 
                     if(!$post_status){
@@ -114,7 +109,6 @@
                     }
                 }
                 ?>
-                        <hr>
                     </div>
 
 

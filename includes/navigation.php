@@ -29,11 +29,8 @@
                     }
                     
                     ?>
-                    <li><a href='admin'>Admin</a> </li>
-
                     
-            <!-- Top Menu Items -->
-            
+                    <!-- Top Menu Items -->                    
                     <?php
                         if(isset($_SESSION['username'])){
                             if(isset($_GET['p_id'])){
@@ -46,7 +43,45 @@
                         }
                     ?>
                     
+
+                    
+
+
+
+                    
+                <li class="form-inline ml-auto" ><a href='admin'>Admin</a> </li>
                 </ul>
+
+                <ul class="nav navbar-right top-nav ">
+               <!-- <li><a href='../'>Home Page</a> </li> -->
+                <?php 
+                    if(isset($_SESSION['username']) && $_SESSION['username'] !== null ){
+                        $name = $_SESSION['firstname'] . " " . $_SESSION['lastname'];
+                    ?>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php $name;  ?><b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="admin/"><i class="fa fa-fw fa-user"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="admin/profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="../includes/logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            <?php }else{ ?>
+                 <li >
+                    <a href="login.php" class="text-white">
+                        <i class="fa fa-user"> </i> Log in
+                    </a>
+                </li>
+            }
+            <?php } ?>
+            </ul>
             <?php 
             // if( Nese nuk je loguar.... )
             ?>
