@@ -42,25 +42,18 @@
                             }
                         }
                     ?>
-                    
-
-                    
-
-
-
-                    
-                <li class="form-inline ml-auto" ><a href='admin'>Admin</a> </li>
                 </ul>
 
-                <ul class=" nav navbar-right top-nav " style="margin-top: 1rem;" >
+                <ul class=" nav navbar-right top-nav " style="background: white; margin-top: 1rem;  border-radius: 25px;" >
                <!-- <li><a href='../'>Home Page</a> </li> -->
                 <?php 
                     if(isset($_SESSION['username']) && $_SESSION['username'] !== null ){
                         $name = $_SESSION['firstname'] . " " . $_SESSION['lastname'];
                     ?>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php $name;  ?><b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $name;  ?><b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <?php if($_SESSION['user_role'] === 'admin' ){ ?>
                         <li>
                             <a href="admin/"><i class="fa fa-fw fa-user"></i> Dashboard</a>
                         </li>
@@ -71,6 +64,21 @@
                         <li>
                             <a href="../includes/logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
+                        <?php } ?>
+
+                        <?php if($_SESSION['user_role'] === 'user' ){ ?>
+                        <li>
+                            <a href="user/"><i class="fa fa-fw fa-user"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="user/profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="../includes/logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                        <?php } ?>
+
                     </ul>
                 </li>
             <?php }else{ ?>
@@ -79,7 +87,6 @@
                         <i class="fa fa-user"> </i> Log in
                     </a>
                 </li>
-            }
             <?php } ?>
             </ul>
             <?php 

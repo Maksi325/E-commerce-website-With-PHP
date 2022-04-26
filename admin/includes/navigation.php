@@ -7,19 +7,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"> Admin</a>
+                <a class="navbar-brand" href="index.php"> Admin Section</a>
             </div>
             
             
             <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-               <li><a href='../'>Home Page</a> </li>
-
+            <ul class="nav navbar-right top-nav" style="margin-right: 3rem;">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $name; ?><b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li><a href='../'><i class="fa fa-fw fa-dashboard"></i>Home Page</a> </li>
                         <li>
-                            <a href="profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="profile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
                         </li>
                         <li class="divider"></li>
                         <li>
