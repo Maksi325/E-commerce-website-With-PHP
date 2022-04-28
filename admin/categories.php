@@ -1,7 +1,7 @@
-<?php   include "includes/header.php";  ?>
+<?php include "includes/header.php";  ?>
 <div id="wrapper">
     <!-- Navigation -->
-    <?php   include "includes/navigation.php";  ?>
+    <?php include "includes/navigation.php";  ?>
     <div id="page-wrapper">
         <div class="container-fluid">
             <!-- Page Heading -->
@@ -9,11 +9,11 @@
                 <div class="col-lg-12">
                     <h1 class="page-header">
                         Welcome Admin To Category Section
-                        <small><?php echo $name;?></small>
+                        <small><?php echo $username; ?></small>
                     </h1>
                     <div class="col-xs-6">
 
-                        <?php    insert_categories();    ?>
+                        <?php insert_categories();    ?>
 
                         <form action="categories.php" method="post">
                             <label for="cat-title">Add Category</label>
@@ -25,11 +25,11 @@
                             </div>
                         </form>
 
-                        <?php     
-                            // Updating categories  
-                            if(isset($_GET['edit'])){
-                                include "includes/Update_categories.php";
-                            }?>
+                        <?php
+                        // Updating categories  
+                        if (isset($_GET['edit'])) {
+                            include "includes/Update_categories.php";
+                        } ?>
                     </div>
 
                     <div class="col_xs_6">
@@ -44,9 +44,9 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    findAllCategories();
-                                    deleteCategories();
-                                    ?>
+                                findAllCategories();
+                                deleteCategories();
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -57,4 +57,4 @@
         <!-- /.container-fluid -->
     </div>
     <!-- /#page-wrapper -->
-    <?php   include "includes/footer.php";   ?>
+    <?php include "includes/footer.php";   ?>

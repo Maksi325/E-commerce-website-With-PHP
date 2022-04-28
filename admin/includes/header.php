@@ -1,15 +1,15 @@
-<?php   ob_start()  ?>
+<?php ob_start()  ?>
 <?php include "../includes/db.php";  ?>
 <?php include "functions.php";  ?>
-<?php session_start();  
+<?php session_start();
 
-if(isset($_SESSION['user_role'])){
-    if($_SESSION['user_role'] !== "admin"){
+if (isset($_SESSION['user_role'])) {
+    if ($_SESSION['user_role'] !== "admin") {
         header("Location: ../");
-    }else{
-        $name = $_SESSION['firstname'] . " " . $_SESSION['lastname'];
+    } else {
+        $username = $_SESSION['username'];
     }
-}else{
+} else {
     header("Location: ../");
 }
 
@@ -37,7 +37,7 @@ if(isset($_SESSION['user_role'])){
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>

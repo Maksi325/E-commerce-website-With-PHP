@@ -9,12 +9,12 @@
                 </button>
                 <a class="navbar-brand" href="index.php"> Admin Section</a>
             </div>
-            
-            
+
+
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav" style="margin-right: 3rem;">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $name; ?><b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $username; ?><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href='../'><i class="fa fa-fw fa-dashboard"></i>Home Page</a> </li>
                         <li>
@@ -27,9 +27,9 @@
                     </ul>
                 </li>
             </ul>
-            
-            
-            
+
+
+
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
@@ -40,10 +40,16 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"><i class="fa fa-fw fa-arrows-v"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="posts_dropdown" class="collapse">
                             <li>
-                                <a href="posts.php">View All Posts </a>
+                                <a href="posts.php">All Posts </a>
                             </li>
                             <li>
-                                <a href="posts.php?source=1">Add Posts</a>
+                                <a href="posts.php?source=1">Published Posts</a>
+                            </li>
+                            <li>
+                                <a href="posts.php?source=4">UnPublished Posts</a>
+                            </li>
+                            <li>
+                                <a href="posts.php?source=5">Deleted Posts</a>
                             </li>
                         </ul>
                     </li>
@@ -51,26 +57,15 @@
                         <a href="categories.php"><i class="fa fa-fw fa-wrench"></i>Categories</a>
                     </li>
                     <li>
-                        <a href="comments.php"><i class="fa fa-fw fa-file"></i>Comments</a>
+                        <a href="users.php"><i class="fa fa-fw fa-user"></i>User</a>
                     </li>
+
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#users_dropdown"><i class="fa fa-fw fa-user"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="users_dropdown" class="collapse">
-                            <li>
-                                <a href="users.php">View All Users</a>
-                            </li>
-                            <li>
-                                <a href="users.php?source=1">Add Users</a>
-                            </li>
-                        </ul>
+                        <a href="profile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
                     </li>
-                    <li>
-                        <a href="profile.php"><i class="fa fa-fw fa-dashboard"></i>Profile</a>
-                    </li>
-                
-                  
-                  </ul>
+
+
+                </ul>
             </div>
             <!-- /.navbar-collapse -->
         </nav>
-        

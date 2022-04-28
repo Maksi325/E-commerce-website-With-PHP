@@ -142,5 +142,3 @@ function countRows( $table ) {
     $count = mysqli_num_rows( $result );
     return $count;
 }
-
-?>

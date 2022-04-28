@@ -1,10 +1,10 @@
-<?php   include "includes/header.php";
+<?php include "includes/header.php";
 ?>
 
 <div id="wrapper">
 
     <!-- Navigation -->
-    <?php   include "includes/navigation.php"; ?>
+    <?php include "includes/navigation.php"; ?>
     <div id="page-wrapper">
 
         <div class="container-fluid">
@@ -14,7 +14,7 @@
                 <div class="col-lg-12">
                     <h1 class="page-header">
                         Welcome AdminTo Dashboard
-                        <small><?php echo $name;?></small>
+                        <small><?php echo $username; ?></small>
                     </h1>
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
@@ -25,7 +25,7 @@
                                             <i class="fa fa-file-text fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <?php $post_counts = countRows( 'posts' ); ?>
+                                            <?php $post_counts = countRows('posts'); ?>
                                             <div class='huge'><?php echo $post_counts; ?></div>
                                             <div>Posts</div>
                                         </div>
@@ -49,7 +49,7 @@
                                             <i class="fa fa-comments fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <?php $comments_counts = countRows( 'comments' ); ?>
+                                            <?php $comments_counts = countRows('comments'); ?>
                                             <div class='huge'><?php echo $comments_counts; ?></div>
                                             <div>Comments</div>
                                         </div>
@@ -73,7 +73,7 @@
                                             <i class="fa fa-user fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <?php $users_counts = countRows( 'users' ); ?>
+                                            <?php $users_counts = countRows('users'); ?>
                                             <div class='huge'><?php echo $users_counts; ?></div>
                                             <div> Users</div>
                                         </div>
@@ -97,7 +97,7 @@
                                             <i class="fa fa-list fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <?php $categories_counts = countRows( 'categories' ); ?>
+                                            <?php $categories_counts = countRows('categories'); ?>
                                             <div class='huge'><?php echo $categories_counts; ?></div>
                                             <div>Categories</div>
                                         </div>
@@ -128,15 +128,14 @@
                         var data = google.visualization.arrayToDataTable([
                             ['Date', 'Count'],
                             <?php
-                            $element_text = ['Active Posts' , 'Categories' , 'Users' , 'Comments'];
-                            $element_count = [$post_counts , $categories_counts , $users_counts , $comments_counts];
-                            for($i=0; $i<4;$i++){
+                            $element_text = ['Active Posts', 'Categories', 'Users', 'Comments'];
+                            $element_count = [$post_counts, $categories_counts, $users_counts, $comments_counts];
+                            for ($i = 0; $i < 4; $i++) {
                                 echo "['$element_text[$i]' , $element_count[$i]],";
-                                
                             }
-                            
+
                             ?>
-                            
+
                         ]);
 
                         var options = {
@@ -159,5 +158,5 @@
 
     </div>
     <!-- /#page-wrapper -->
-    <?php   include "includes/footer.php";
-?>
+    <?php include "includes/footer.php";
+    ?>
