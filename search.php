@@ -13,53 +13,55 @@
         <div class="row">
 
             <!-- Blog Entries Column -->
-            <div class="col-md-10">
-                <!-- Here start Body -->
-                <div class="sticky-top" style="height: 4rem;">
-                    <?php
-                    if (isset($_SESSION['username']) && $_SESSION['username'] !== null) {
-                    ?>
-
-                        <div class="col-lg-7" style=" margin-left:15%; background-color: blue; height: 3.6rem; width: 12rem;border-radius: 25px;">
-                            <a href="/user/posts.php?source= 1" class="btn" style="color:black;">+ Add Post</a>
-                        </div>
-
-                    <?php } ?>
-
-                    <div class=" ml-2 col-lg-4 " style=" position: absolute; right: 0px; ">
-                        <form action="search.php" method="post">
-                            <div class="input-group">
-                                <input name="search" type="text" class="form-control" style="border-radius: 25px;">
-                                <span class="input-group-btn">
-                                    <button name="submit" class="btn btn-default" type="submit" style="border-radius: 30px;">
-                                        <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
+            <!-- Here start Body -->
+            <div class="sticky-top col-md-12 col-sm-8 " style="height: 4rem;">
+                <?php
+                if (isset($_SESSION['username']) && $_SESSION['username'] !== null) {
+                ?>
+                    <div class="col-md-2 col-xs-5" style="  background-color: blue; height: 3.6rem; border-radius: 25px;">
+                        <a href="/user/posts.php?source= 1" class="btn" style="color:black; width: 40%;">+ Add Post</a>
                     </div>
 
+                <?php } ?>
+
+                <div class="ml-2 col-xs-7 col-md-4  " style=" position: absolute; right:0px; ">
+                    <form action="search.php" method="post">
+                        <div class="input-group">
+                            <input name="search" type="text" class="form-control" style="border-radius: 25px;">
+                            <span class="input-group-btn">
+                                <button name="submit" class="btn btn-default" type="submit" style="border-radius: 30px;">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
                 </div>
 
-                <?php
-                if (isset($_POST['submit'])) {
-                    $search = $_POST['search'];
+            </div>
 
-                    $querry  = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ";
-                    $search_querry = mysqli_query($connection, $querry);
-                    $count_row = mysqli_num_rows($search_querry);
+            <?php
+            if (isset($_POST['submit'])) {
+                $search = $_POST['search'];
 
-                    if ($count_row == 0) {
-                        echo "<h1> No result found.</h1>";
-                    } else {
-                        while ($row = mysqli_fetch_assoc($search_querry)) {
-                            $post_title = $row['post_title'];
-                            $post_author = $row['post_author'];
-                            $post_date = $row['post_date'];
-                            $post_image = $row['post_image'];
-                            $post_content = $row['post_content'];
+                $querry  = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ";
+                $search_querry = mysqli_query($connection, $querry);
+                $count_row = mysqli_num_rows($search_querry);
 
-                ?>
+                if ($count_row == 0) {
+                    echo "<h1> No result found.</h1>";
+                } else {
+                    while ($row = mysqli_fetch_assoc($search_querry)) {
+                        $post_id = $row['post_id'];
+                        $post_user_id = $row['post_user_id'];
+                        $post_title = $row['post_title'];
+                        $post_author = $row['post_author'];
+                        $post_date = $row['post_date'];
+                        $post_image = $row['post_image'];
+                        $post_content = $row['post_content'];
+
+            ?>
+                        <div class="col-md-10">
+                            <br>
                             <article style="margin-bottom: 3rem; margin-left: 30%; margin-right: 30%; width: 40%; background-color:  #f2ece5; border-radius:20px; ">
                                 <br>
                                 <h2 style="margin-left: 11%; margin-right: 11%; width: 78%;">
@@ -85,17 +87,12 @@
                                     Read More <span class="glyphicon glyphicon-chevron-right"></span>
                                 </a>
                             </article>
-                <?php
-                        }
+                        </div>
+            <?php
                     }
                 }
-                ?>
-                <hr>
-
-
-
-            </div>
-
+            }
+            ?>
 
         </div>
         <!-- /.row -->

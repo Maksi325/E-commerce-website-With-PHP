@@ -8,64 +8,54 @@
     <?php include "includes/navigation.php";  ?>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container " style="width: 70%;">
 
         <div class="row">
 
             <!-- Blog Entries Column -->
-            <div class="col-md-10 ">
+            <div class="sticky-top col-md-12 col-sm-8 " style="height: 4rem;">
                 <?php
-                $post_status = null;
-
-
-
-                $query = "Select * from posts where post_status = 'Published'";
-
-                $result = mysqli_query($connection, $query);
-
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $post_id = $row['post_id'];
-                    $post_user_id = $row['post_user_id'];
-                    $post_title = $row['post_title'];
-                    $post_author = $row['post_author'];
-                    $post_date = $row['post_date'];
-                    $post_image = $row['post_image'];
-                    $post_content =  substr($row['post_content'], 0, 100) . "...";
-                    $post_status = $row['post_status'];
-
+                if (isset($_SESSION['username']) && $_SESSION['username'] !== null) {
                 ?>
-                    <!-- Here start Body -->
-                    <div class="sticky-top" style="height: 4rem;">
-                        <?php
-                        if (isset($_SESSION['username']) && $_SESSION['username'] !== null) {
-                        ?>
-
-                            <div class="col-lg-7" style=" margin-left:15%; background-color: blue; height: 3.6rem; width: 12rem;border-radius: 25px;">
-                                <a href="/user/posts.php?source= 1" class="btn" style="color:black;">+ Add Post</a>
-                            </div>
-
-                        <?php } ?>
-
-                        <div class=" ml-2 col-lg-4 " style=" position: absolute; right:0px; ">
-                            <form action="search.php" method="post">
-                                <div class="input-group">
-                                    <input name="search" type="text" class="form-control" style="border-radius: 25px;">
-                                    <span class="input-group-btn">
-                                        <button name="submit" class="btn btn-default" type="submit" style="border-radius: 30px;">
-                                            <span class="glyphicon glyphicon-search"></span>
-                                        </button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
-
+                    <div class="col-md-2 col-xs-5" style="  background-color: blue; height: 3.6rem; border-radius: 25px;">
+                        <a href="/user/posts.php?source= 1" class="btn" style="color:black; width: 40%;">+ Add Post</a>
                     </div>
+                <?php } ?>
 
+                <div class="ml-2 col-xs-7 col-md-4  " style=" position: absolute; right:0px; ">
+                    <form action="search.php" method="post">
+                        <div class="input-group">
+                            <input name="search" type="text" class="form-control" style="border-radius: 25px;">
+                            <span class="input-group-btn">
+                                <button name="submit" class="btn btn-default" type="submit" style="border-radius: 30px;">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <?php
+            $post_status = null;
+            $query = "Select * from posts where post_status = 'Published'";
 
+            $result = mysqli_query($connection, $query);
 
+            while ($row = mysqli_fetch_assoc($result)) {
+                $post_id = $row['post_id'];
+                $post_user_id = $row['post_user_id'];
+                $post_title = $row['post_title'];
+                $post_author = $row['post_author'];
+                $post_date = $row['post_date'];
+                $post_image = $row['post_image'];
+                $post_content =  substr($row['post_content'], 0, 100) . "...";
+                $post_status = $row['post_status'];
 
+            ?>
+
+                <div class="col-md-4 col-sm-6 ">
                     <br>
-                    <article style="margin-bottom: 3rem; margin-left: 30%; margin-right: 30%; width: 40%; background-color:  #f2ece5; border-radius:20px; ">
+                    <article class="" style="margin-bottom: 3rem; height: 57rem; background-color:  #f2ece5; border-radius:20px; ">
                         <br>
                         <h2 style="margin-left: 11%; margin-right: 11%; width: 78%;">
                             <a href="post.php?p_id=<?php echo $post_id  ?>">
@@ -85,21 +75,20 @@
                         <p style="margin-top: 2rem; margin-left: 11%; margin-right: 11%; width: 78%;">
                             <?php echo $post_content    ?>
                         </p>
-                        <a class="btn btn-primary" style="
-                margin-bottom: 3rem; margin-left: 20%; margin-right: 20%; width: 60%;" href="post.php?p_id=<?php echo $post_id  ?>">
+                        <a class="btn btn-primary" style=" margin-bottom: 3rem; margin-left: 20%; margin-right: 20%; width: 60%;" href="post.php?p_id=<?php echo $post_id  ?>">
                             Read More <span class="glyphicon glyphicon-chevron-right"></span>
                         </a>
                     </article>
 
 
-                <?php  }
-                if (!$post_status) {
-                    echo "<h1 class='text-center'> NO POST SORRY </h1>";
-                }
-                ?>
-            </div>
-
+                </div>
+            <?php  }
+            if (!$post_status) {
+                echo "<h1 class='text-center'> NO POST SORRY </h1>";
+            }
+            ?>
         </div>
+
 
         <hr>
 

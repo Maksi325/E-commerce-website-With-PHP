@@ -8,62 +8,62 @@
     <?php include "includes/navigation.php";  ?>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" style="width: 70%;">
 
         <div class="row">
             <!-- Blog Entries Column -->
-            <div class="col-md-10">
-                <!-- Here start Body -->
-                <div class="sticky-top" style="height: 4rem;">
-                    <?php
-                    if (isset($_SESSION['username']) && $_SESSION['username'] !== null) {
-                    ?>
-                        <div class="col-lg-7" style=" margin-left:15%; background-color: blue; height: 3.6rem; width: 12rem;border-radius: 25px;">
-                            <a href="/user/posts.php?source= 1" class="btn" style="color:black;">+ Add Post</a>
-                        </div>
-
-                    <?php } ?>
-
-                    <div class=" ml-2 col-lg-4 " style=" position: absolute; right: 0px; ">
-                        <form action="search.php" method="post">
-                            <div class="input-group">
-                                <input name="search" type="text" class="form-control" style="border-radius: 25px;">
-                                <span class="input-group-btn">
-                                    <button name="submit" class="btn btn-default" type="submit" style="border-radius: 30px;">
-                                        <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
+            <!-- Here start Body -->
+            <div class="sticky-top col-md-12 col-sm-8 " style="height: 4rem;">
+                <?php
+                if (isset($_SESSION['username']) && $_SESSION['username'] !== null) {
+                ?>
+                    <div class="col-md-2 col-xs-5" style="  background-color: blue; height: 3.6rem; border-radius: 25px;">
+                        <a href="/user/posts.php?source= 1" class="btn" style="color:black; width: 40%;">+ Add Post</a>
                     </div>
 
+                <?php } ?>
+
+                <div class="ml-2 col-xs-7 col-md-4  " style=" position: absolute; right:0px; ">
+                    <form action="search.php" method="post">
+                        <div class="input-group">
+                            <input name="search" type="text" class="form-control" style="border-radius: 25px;">
+                            <span class="input-group-btn">
+                                <button name="submit" class="btn btn-default" type="submit" style="border-radius: 30px;">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
                 </div>
-                <?php
-                $post_status = null;
+            </div>
+            <?php
+            $post_status = null;
 
-                if (isset($_GET['cat_id'])) {
-                    $the_category_id = $_GET['cat_id'];
-                } else {
-                    header("Location: error_page.php");
-                }
+            if (isset($_GET['cat_id'])) {
+                $the_category_id = $_GET['cat_id'];
+            } else {
+                header("Location: error_page.php");
+            }
 
 
-                $query = "Select * from posts where  post_category_id = $the_category_id and post_status = 'Published'";
+            $query = "Select * from posts where  post_category_id = $the_category_id and post_status = 'Published'";
 
-                $result = mysqli_query($connection, $query);
+            $result = mysqli_query($connection, $query);
 
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $post_id = $row['post_id'];
-                    $post_user_id = $row['post_user_id'];
-                    $post_title = $row['post_title'];
-                    $post_author = $row['post_author'];
-                    $post_date = $row['post_date'];
-                    $post_image = $row['post_image'];
-                    $post_content =  substr($row['post_content'], 0, 100) . "...";
-                    $post_status = $row['post_status'];
+            while ($row = mysqli_fetch_assoc($result)) {
+                $post_id = $row['post_id'];
+                $post_user_id = $row['post_user_id'];
+                $post_title = $row['post_title'];
+                $post_author = $row['post_author'];
+                $post_date = $row['post_date'];
+                $post_image = $row['post_image'];
+                $post_content =  substr($row['post_content'], 0, 100) . "...";
+                $post_status = $row['post_status'];
 
-                ?>
-                    <article style="margin-bottom: 3rem; margin-left: 30%; margin-right: 30%; width: 40%; background-color:  #f2ece5; border-radius:20px; ">
+            ?>
+                <div class="col-md-4 col-sm-6">
+                    <br>
+                    <article class="" style="margin-bottom: 3rem; height: 57rem; background-color:  #f2ece5; border-radius:20px; ">
                         <br>
                         <h2 style="margin-left: 11%; margin-right: 11%; width: 78%;">
                             <a href="post.php?p_id=<?php echo $post_id  ?>">
@@ -89,17 +89,12 @@
                         </a>
                     </article>
 
-                <?php  }
-                if (!$post_status) {
-                    echo "<h1 class='text-center'> NO POST SORRY </h1>";
-                }
-                ?>
-                <hr>
-
-
-
-            </div>
-
+                </div>
+            <?php  }
+            if (!$post_status) {
+                echo "<h1 class='text-center'> NO POST SORRY </h1>";
+            }
+            ?>
 
         </div>
         <!-- /.row -->

@@ -1,5 +1,5 @@
-<?php session_start();?>
-<?php   ob_start()  ?>
+<?php session_start(); ?>
+<?php ob_start()  ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,4 +21,4 @@
     <link href="css/user_profile.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-image: linear-gradient(to right,green , red , red , red,green);">
