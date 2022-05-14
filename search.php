@@ -57,12 +57,12 @@
                         $post_author = $row['post_author'];
                         $post_date = $row['post_date'];
                         $post_image = $row['post_image'];
-                        $post_content = $row['post_content'];
+                        $post_content =  substr($row['post_content'], 0, 100);
 
             ?>
                         <div class="col-md-10">
                             <br>
-                            <article style="margin-bottom: 3rem; margin-left: 30%; margin-right: 30%; width: 40%; background-color:  #f2ece5; border-radius:20px; ">
+                            <article style="margin-bottom: 3rem; margin-left: 30%; margin-right: 30%; width: 40%; background-color:  white; border-radius:20px; ">
                                 <br>
                                 <h2 style="margin-left: 11%; margin-right: 11%; width: 78%;">
                                     <a href="post.php?p_id=<?php echo $post_id  ?>">

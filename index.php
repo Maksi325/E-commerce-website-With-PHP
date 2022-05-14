@@ -48,14 +48,14 @@
                 $post_author = $row['post_author'];
                 $post_date = $row['post_date'];
                 $post_image = $row['post_image'];
-                $post_content =  substr($row['post_content'], 0, 100) . "...";
+                $post_content =  substr($row['post_content'], 0, 100);
                 $post_status = $row['post_status'];
 
             ?>
 
-                <div class="col-md-4 col-sm-6 ">
+                <div class=" col-md-4 col-sm-6 ">
                     <br>
-                    <article class="" style="margin-bottom: 3rem; height: 57rem; background-color:  #f2ece5; border-radius:20px; ">
+                    <article class="article" style="margin-bottom: 3rem; height: 57rem; background-color:  white; border-radius:20px; ">
                         <br>
                         <h2 style="margin-left: 11%; margin-right: 11%; width: 78%;">
                             <a href="post.php?p_id=<?php echo $post_id  ?>">
@@ -74,6 +74,7 @@
                         <img class="img-responsive" style="margin-left: 11%; margin-right: 11%; width: 78%; height: 200px " src="image/<?php echo $post_image ?>" alt="">
                         <p style="margin-top: 2rem; margin-left: 11%; margin-right: 11%; width: 78%;">
                             <?php echo $post_content    ?>
+                            <a href="post.php?p_id=<?php echo $post_id  ?>">...</a>
                         </p>
                         <a class="btn btn-primary" style=" margin-bottom: 3rem; margin-left: 20%; margin-right: 20%; width: 60%;" href="post.php?p_id=<?php echo $post_id  ?>">
                             Read More <span class="glyphicon glyphicon-chevron-right"></span>

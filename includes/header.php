@@ -21,4 +21,4 @@
     <link href="css/user_profile.css" rel="stylesheet">
 </head>
 
-<body style="background-image: linear-gradient(to right,green , red , red , red,green);">
+<body style="background-color: whitesmoke;">

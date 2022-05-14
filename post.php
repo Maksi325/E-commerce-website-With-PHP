@@ -57,9 +57,9 @@
                 $post_image = $row['post_image'];
                 $post_content = $row['post_content'];
             ?>
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <br>
-                    <article style="margin-bottom: 3rem; margin-left: 30%; margin-right: 30%; width: 40%; background-color:  #f2ece5; border-radius:20px; ">
+                    <article style="margin-bottom: 3rem; margin-left: 30%; margin-right: 30%; width: 40%; background-color:  white; border-radius:20px; ">
                         <br>
                         <h2 style="margin-left: 11%; margin-right: 11%; width: 78%;">
                             <?php echo $post_title    ?>
@@ -77,10 +77,61 @@
                         <p style="margin-top: 2rem; margin-left: 11%; margin-right: 11%; width: 78%;">
                             <?php echo $post_content    ?>
                         </p>
-                        <a class="btn btn-primary" style="
-                margin-bottom: 3rem; margin-left: 20%; margin-right: 20%; width: 60%;" href="post.php?p_id=<?php echo $the_post_id  ?>">
-                            Read More <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
+
+                        <div style="display: inline-table;">
+                            <h4 style="float: left;">Should be logged in to Comment here</h4>
+                            <button style="float: right;" class="btn btn-bg-primary">log in</button>
+                        </div>
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" src="image/person.png" alt="" style="width: 10rem;">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <h4>Author Name</h4>
+                                </h4>
+                                <form role="form" style="display: inline-table;">
+                                    <div class="form-group" style="float: left;">
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" style="float: right;">Comment</button>
+                                </form>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- Comments  -->
+                        <!-- Make dynamic Comment -->
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" src="image/person.png" alt="" style="width: 10rem;">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <h4>Author Name</h4>
+                                    <small>August 25, 2014 at 9:30 PM</small>
+                                </h4>
+                                <p>
+                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" src="image/person.png" alt="" style="width: 10rem;">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <h4>Author Name</h4>
+                                    <small>August 25, 2014 at 9:30 PM</small>
+                                </h4>
+                                <p>
+                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                </p>
+                            </div>
+                        </div>
                     </article>
                 </div>
             <?php  }   ?>
