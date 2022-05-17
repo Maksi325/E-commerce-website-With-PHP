@@ -31,8 +31,11 @@ if (isset($_POST['login'])) {
     if ($username === $db_username && $password === $db_user_password) { // Nese logohet 
         $_SESSION['user_id'] = $db_user_id;
         $_SESSION['username'] = $db_username;
+        $_SESSION['user_password'] = $db_user_password;
         $_SESSION['firstname'] = $db_user_firstname;
         $_SESSION['lastname'] = $db_user_lastname;
+        $_SESSION['user_image'] = $db_user_image;
+        $_SESSION['user_email'] = $db_user_email;
         $_SESSION['user_role'] = $db_user_role;
         if ($db_user_role === "admin") {
             header("Location: ../admin/");
@@ -40,10 +43,10 @@ if (isset($_POST['login'])) {
             header("Location: ../user/");
         }
     } else { //Nese esht User coje tek home page 
-        header("Location: ../");
+        header("Location: ../login.php?e=e");
     }
 } else {
-    header("Location: ../");
+    header("Location: ../login.php");
 }
 
 ?>
