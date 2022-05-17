@@ -78,89 +78,95 @@
                             <?php echo $post_content    ?>
                         </p>
 
-                        <div style="display: inline-table;">
-                            <h4 style="float: left;">Should be logged in to Comment here</h4>
-                            <button style="float: right;" class="btn btn-bg-primary">log in</button>
-                        </div>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="image/person.png" alt="" style="width: 10rem;">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">
-                                    <h4>Author Name</h4>
-                                </h4>
-                                <form role="form" style="display: inline-table;">
-                                    <div class="form-group" style="float: left;">
-                                        <textarea class="form-control" rows="3"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary" style="float: right;">Comment</button>
-                                </form>
-                            </div>
-                        </div>
-
-
-
-
                         <!-- Comments  -->
+                        <hr>
+                        <p style="text-align: center;">Comment Section</p>
+                        <hr>
+                        <!-- if you are not loged in  -->
+                        <?php if (!isset($_SESSION['user_id'])) { ?>
+                            <div style="display: inline-table;">
+                                <h4 style="float: left;">Should be logged in to Comment here</h4>
+                                <a href="/login.php">
+                                    <button style="float: right;" class="btn btn-bg-primary">log in</button>
+                                </a>
+                            </div>
+
+                            <!-- if you are logged in  -->
+                        <?php } elseif ($_SESSION['user_role']) { ?>
+                            <div class="media">
+                                <a class="pull-left" href="#">
+                                    <?php if (isset($_SESSION['user_image'])) {
+                                        $imageUrl = "image/" . $_SESSION['user_image'];
+                                    } else {
+                                        $imageUrl = "image/person.png";
+                                    }
+                                    ?>
+                                    <img class="media-object" src="<?php echo $imageUrl; ?>" alt="" style="width: 10rem;">
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <?php echo $_SESSION['username']; ?>
+                                    </h4>
+                                    <form role="form" action="" method="POST" style="display: inline-table;">
+                                        <div class="form-group" style="float: left;">
+                                            <textarea name="textt" class="form-control" rows="3"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" name="comment" style="float: right;">Comment</button>
+                                    </form>
+                                </div>
+                            </div>
+                        <?php
+                            if (isset($_POST['comment'])) {
+                                $comment = $_POST['textt'];
+                                $commentQuery = "INSERT INTO `comments` ( `comment_post_id`, `comment_user_id`, `comment_author`, `comment_email`, `comment_content`,  `comment_date`) ";
+                                $commentQuery .= " values ( {$the_post_id} , {$_SESSION['user_id']} , '{$_SESSION['username']}' , '{$_SESSION['user_email']}' ,  '{$comment}'  , now())";
+                                $result = mysqli_query($connection, $commentQuery);
+                            }
+                        } ?>
+
+
+
+
+
                         <!-- Make dynamic Comment -->
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="image/person.png" alt="" style="width: 10rem;">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">
-                                    <h4>Author Name</h4>
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                <p>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                </p>
+                        <?php
+                        $takecommentsQuerry = "Select * FROM comments , users where comment_user_id = user_id and comment_post_id = {$the_post_id} ";
+
+                        $result = mysqli_query($connection, $takecommentsQuerry);
+
+                        while ($row = mysqli_fetch_array($result)) {
+                            $comment_author = $row['comment_author'];
+                            $comment_date = $row['comment_date'];
+                            $comment_content = $row['comment_content'];
+                            $comment_user_id = $row['comment_user_id'];
+                        ?>
+
+                            <div class="media" style="margin-bottom: 2rem; margin-top: 3rem;">
+                                <a class="pull-left" href="user_profile.php?u_id=<?php echo $comment_user_id; ?>">
+                                    <?php if (isset($row['user_image'])) {
+                                        $imageUrl = "image/" . $row['user_image'];
+                                    } else {
+                                        $imageUrl = "image/person.png";
+                                    }
+                                    ?>
+                                    <img class="media-object" src="<?php echo $imageUrl; ?>" alt="" style="width: 10rem;">
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <h4><?php echo $comment_author; ?></h4>
+                                        <small><?php echo $comment_date; ?></small>
+                                    </h4>
+                                    <p>
+                                        <?php echo $comment_content; ?>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="image/person.png" alt="" style="width: 10rem;">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">
-                                    <h4>Author Name</h4>
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                <p>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                </p>
-                            </div>
-                        </div>
+
+                        <?php } ?>
+
                     </article>
                 </div>
             <?php  }   ?>
-
-            <!-- Blog Comments -->
-            <!-- <?php
-                    if (isset($_POST['create_comment'])) {
-                        $the_post_id = $_GET['p_id'];
-
-                        $comment_author = $_POST['comment_name'];
-                        $comment_email = $_POST['comment_email'];
-                        $comment_content = $_POST['comment_content'];
-
-                        $insertQuery = "Insert into `comments` (`comment_post_id`, `comment_author` , `comment_email` , `comment_content` , `comment_status` , `comment_date`)";
-                        $insertQuery .= " Values ($the_post_id, '{$comment_author}' , '{$comment_email}' , '{$comment_content}' , 'Unapproved' ,now())";
-
-                        $result = mysqli_query($connection, $insertQuery);
-                        if (!$result) {
-                            die('Querry Falied: ' . mysqli_error($connection));
-                        }
-                        $QuerryIncreaseCommentCount = "Update posts SET post_coment_count = post_coment_count + 1 ";
-                        $QuerryIncreaseCommentCount .= " WHERE post_id = $the_post_id";
-
-                        $Increase = mysqli_query($connection, $QuerryIncreaseCommentCount);
-                        if (!$Increase) {
-                            die('Querry Falied: ' . mysqli_error($connection));
-                        }
-                    }
-                    ?>   -->
         </div>
     </div>
     <!-- Footer -->
