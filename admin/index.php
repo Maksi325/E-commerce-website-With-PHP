@@ -42,30 +42,6 @@
                         </div>
 
                         <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-green">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-comments fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <?php $comments_counts = countRows('comments'); ?>
-                                            <div class='huge'><?php echo $comments_counts; ?></div>
-                                            <div>Comments</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="comments.php">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">View Details</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6">
                             <div class="panel panel-yellow">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -128,9 +104,9 @@
                         var data = google.visualization.arrayToDataTable([
                             ['Date', 'Count'],
                             <?php
-                            $element_text = ['Active Posts', 'Categories', 'Users', 'Comments'];
-                            $element_count = [$post_counts, $categories_counts, $users_counts, $comments_counts];
-                            for ($i = 0; $i < 4; $i++) {
+                            $element_text = ['Active Posts', 'Categories', 'Users'];
+                            $element_count = [$post_counts, $categories_counts, $users_counts];
+                            for ($i = 0; $i < 3; $i++) {
                                 echo "['$element_text[$i]' , $element_count[$i]],";
                             }
 

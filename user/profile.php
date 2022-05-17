@@ -64,6 +64,10 @@
                         $_SESSION['username'] = $username;
                         $_SESSION['firstname'] = $user_firstname;
                         $_SESSION['lastname'] = $user_lastname;
+                        $_SESSION['user_password'] = $user_password;
+                        $_SESSION['user_image'] = $user_image;
+                        $_SESSION['user_email'] = $user_email;
+
                         header("Location: index.php");
                     }
                     ?>

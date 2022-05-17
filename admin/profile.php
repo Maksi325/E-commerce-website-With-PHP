@@ -58,8 +58,14 @@
                         $updateQuery .= "WHERE `users`.`user_id` = {$user_id}";
 
                         $updatePost = mysqli_query($connection, $updateQuery);
+                        $_SESSION['username'] = $username;
+                        $_SESSION['user_password'] = $user_password;
+                        $_SESSION['firstname'] = $user_firstname;
                         $_SESSION['lastname'] = $user_lastname;
+                        $_SESSION['user_image'] = $user_image;
+                        $_SESSION['user_email'] = $user_email;
                         $_SESSION['user_role'] = $user_role;
+
                         header("Location: users.php");
                     }
                     ?>
@@ -99,15 +105,6 @@
                             <label for="user_email">E - mail</label>
                             <input value='<?php echo $user_email ?>' type="email" class="form-control" name="user_email">
                         </div>
-
-                        <!--
-                        <div class="form-group">
-                        <label for="post_image">Post Image</label>
-                        <br>
-                        <img src="../image/<?php echo $post_image ?>" width="200" alt="">
-                        <input type="file" name="image">
-                        </div>
-                        -->
 
                         <div class="form-group">
                             <label for="user_password">Old Password</label>
