@@ -21,8 +21,6 @@
         $email =  mysqli_real_escape_string($connection, $email);
         $password =  mysqli_real_escape_string($connection, $password);
 
-        $password = md5($password);
-
 
         $CheckQuery = "select * from users where username = '{$username}'";
 
@@ -37,9 +35,11 @@
             $registrationQuerry .= "( '$username', '$password', '$firstname', '$lastname', '$email', 'user') ";
 
             $result = mysqli_query($connection, $registrationQuerry);
+            header("Location: login.php");
         }
     }
     ?>
+
 
     <br>
     <br>

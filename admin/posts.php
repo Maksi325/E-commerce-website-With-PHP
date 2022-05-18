@@ -33,6 +33,7 @@
                             include "includes/edit_post.php";
                             break;
                         case '4': //Unpublished Posts
+                            include "includes/view_all_posts.php";
 
                             break;
                         case '5': //deleted Posts

@@ -30,7 +30,7 @@
                             include "includes/edit_post.php";
                             break;
                         case '4': //Sugest To Delete an post 
-                            deletePostById($post_id);
+                            deletePostById($_GET['delete_id']);
                             break;
                         default:
                             include "includes/view_all_posts.php";

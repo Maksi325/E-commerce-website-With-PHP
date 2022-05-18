@@ -50,7 +50,7 @@
                 echo "<td>$post_coment_count</td>";
                 echo "<td>$post_date</td>";
                 echo "<td><a class = 'fa fa-fw fa-edit' href='posts.php?edit_id={$post_id}&source=3'></a>  </td>";
-                echo "<td><a class = 'fa fa-fw fa-trash' href='posts.php?edit_id={$post_id}&source=4'></a>  </td>";
+                echo "<td><a class = 'fa fa-fw fa-trash' href='posts.php?delete_id={$post_id}&source=4'></a>  </td>";
                 echo "</tr>";
             }
             ?>
