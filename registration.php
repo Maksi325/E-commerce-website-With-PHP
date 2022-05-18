@@ -24,16 +24,15 @@
         $password = md5($password);
 
 
-        $CheckQuery = "select COUNT(*) from users where username = '{$username}'";
+        $CheckQuery = "select * from users where username = '{$username}'";
 
         $result = mysqli_query($connection, $CheckQuery);
         $count = mysqli_num_rows($result);
+        echo $count;
 
         if ($count != 0) {
             $MessageError = true;
         } else {
-
-
             $registrationQuerry = " INSERT INTO `users` ( `username`, `user_password`, `user_firstname`, `user_lastname`, `user_email`, `role`) VALUES ";
             $registrationQuerry .= "( '$username', '$password', '$firstname', '$lastname', '$email', 'user') ";
 
@@ -41,6 +40,7 @@
         }
     }
     ?>
+
     <br>
     <br>
     <section id="login">
