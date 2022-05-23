@@ -83,7 +83,7 @@
                         <p style="text-align: center;">Comment Section</p>
                         <hr>
                         <!-- if you are not loged in  -->
-                        <?php if (!isset($_SESSION['user_id'])) { ?>
+                        <?php if (!isset($_SESSION['user_id']) || !empty($_SESSION['user_id'])) { ?>
                             <div style="display: inline-table;">
                                 <h4 style="float: left;">Should be logged in to Comment here</h4>
                                 <a href="/login.php">
@@ -95,7 +95,7 @@
                         <?php } elseif ($_SESSION['user_role']) { ?>
                             <div class="media">
                                 <a class="pull-left" href="#">
-                                    <?php if (isset($_SESSION['user_image'])) {
+                                    <?php if (!empty($_SESSION['user_image'])) {
                                         $imageUrl = "image/" . $_SESSION['user_image'];
                                     } else {
                                         $imageUrl = "image/person.png";
@@ -121,6 +121,7 @@
                                 $commentQuery = "INSERT INTO `comments` ( `comment_post_id`, `comment_user_id`, `comment_author`, `comment_email`, `comment_content`,  `comment_date`) ";
                                 $commentQuery .= " values ( {$the_post_id} , {$_SESSION['user_id']} , '{$_SESSION['username']}' , '{$_SESSION['user_email']}' ,  '{$comment}'  , now())";
                                 $result = mysqli_query($connection, $commentQuery);
+                                header('Location: ../post.php?p_id=$the_post_id');
                             }
                         } ?>
 
@@ -143,7 +144,7 @@
 
                             <div class="media" style="margin-bottom: 2rem; margin-top: 3rem;">
                                 <a class="pull-left" href="user_profile.php?u_id=<?php echo $comment_user_id; ?>">
-                                    <?php if (isset($row['user_image'])) {
+                                    <?php if (!empty($row['user_image'])) {
                                         $imageUrl = "image/" . $row['user_image'];
                                     } else {
                                         $imageUrl = "image/person.png";
