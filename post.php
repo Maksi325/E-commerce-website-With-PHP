@@ -83,7 +83,7 @@
                         <p style="text-align: center;">Comment Section</p>
                         <hr>
                         <!-- if you are not loged in  -->
-                        <?php if (!isset($_SESSION['user_id']) || !empty($_SESSION['user_id'])) { ?>
+                        <?php if (!isset($_SESSION['user_id'])) { ?>
                             <div style="display: inline-table;">
                                 <h4 style="float: left;">Should be logged in to Comment here</h4>
                                 <a href="/login.php">
@@ -92,7 +92,7 @@
                             </div>
 
                             <!-- if you are logged in  -->
-                        <?php } elseif ($_SESSION['user_role']) { ?>
+                        <?php } elseif (isset($_SESSION['user_role'])) { ?>
                             <div class="media">
                                 <a class="pull-left" href="#">
                                     <?php if (!empty($_SESSION['user_image'])) {
